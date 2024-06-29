@@ -9,10 +9,10 @@
 #include "unk_02025CB0.h"
 
 typedef struct UnkStruct_02025CCC_t {
-    s64 unk_00;
-    u8 unk_08[6];
-    u8 unk_0E;
-    u8 unk_0F;
+    s64 rtcOffset;
+    u8 macAddr[6];
+    u8 bdayMonth;
+    u8 bdayDate;
     UnkStruct_02055BA8 unk_10;
     u8 unk_48;
     u8 unk_49;
@@ -48,13 +48,13 @@ void sub_02025CE4 (UnkStruct_02025CCC * param0)
 {
     OSOwnerInfo v0;
 
-    param0->unk_00 = OS_GetOwnerRtcOffset();
+    param0->rtcOffset = OS_GetOwnerRtcOffset();
 
-    OS_GetMacAddress(param0->unk_08);
+    OS_GetMacAddress(param0->macAddr);
     OS_GetOwnerInfo(&v0);
 
-    param0->unk_0E = v0.birthday.month;
-    param0->unk_0F = v0.birthday.day;
+    param0->bdayMonth = v0.birthday.month;
+    param0->bdayDate = v0.birthday.day;
 }
 
 BOOL sub_02025D10 (const UnkStruct_02025CCC * param0)
@@ -65,7 +65,7 @@ BOOL sub_02025D10 (const UnkStruct_02025CCC * param0)
     OS_GetMacAddress(v1);
 
     for (v0 = 0; v0 < 6; v0++) {
-        if (param0->unk_08[v0] != v1[v0]) {
+        if (param0->macAddr[v0] != v1[v0]) {
             return 0;
         }
     }
@@ -75,17 +75,17 @@ BOOL sub_02025D10 (const UnkStruct_02025CCC * param0)
 
 BOOL sub_02025D40 (const UnkStruct_02025CCC * param0)
 {
-    return OS_GetOwnerRtcOffset() == param0->unk_00;
+    return OS_GetOwnerRtcOffset() == param0->rtcOffset;
 }
 
 u8 sub_02025D5C (const UnkStruct_02025CCC * param0)
 {
-    return param0->unk_0E;
+    return param0->bdayMonth;
 }
 
 u8 sub_02025D60 (const UnkStruct_02025CCC * param0)
 {
-    return param0->unk_0F;
+    return param0->bdayDate;
 }
 
 BOOL sub_02025D64 (const UnkStruct_02025CCC * param0)
@@ -112,7 +112,7 @@ void sub_02025D78 (UnkStruct_02025CCC * param0, s32 param1)
 
 void sub_02025D84 (UnkStruct_02055BA8 * param0)
 {
-    param0->unk_00 = 1;
+    param0->rtcOffset = 1;
     GetCurrentDateTime(&param0->unk_04, &param0->unk_14);
     param0->unk_20 = RTC_ConvertDateToDay(&param0->unk_04);
     param0->unk_24 = RTC_ConvertDateTimeToSecond(&param0->unk_04, &param0->unk_14);
