@@ -1,6 +1,6 @@
 #ifndef POKEPLATINUM_STRUCT_02025CCC_DECL_H
 #define POKEPLATINUM_STRUCT_02025CCC_DECL_H
 
-typedef struct UnkStruct_02025CCC_t UnkStruct_02025CCC;
+typedef struct UnkStruct_02025CCC_t SystemData;
 
 #endif // POKEPLATINUM_STRUCT_02025CCC_DECL_H

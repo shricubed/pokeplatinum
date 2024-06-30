@@ -17,7 +17,7 @@
 
 typedef struct {
     UnkStruct_0202DA40 * unk_00;
-    UnkStruct_02025CCC * unk_04;
+    SystemData * unk_04;
     Party * unk_08;
     PCBoxes * unk_0C;
     PokedexData * unk_10;
