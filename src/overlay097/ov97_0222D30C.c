@@ -677,7 +677,7 @@ static int ov97_0222DA64 (OverlayManager * param0)
 static int ov97_0222DA84 (OverlayManager * param0)
 {
     Window * v0;
-    UnkStruct_02025CCC * v1;
+    SystemData * v1;
     UnkStruct_ov97_0222D04C * v2 = OverlayManager_Data(param0);
     MysteryGift * v3 = SaveData_MysteryGift(v2->unk_04);
 

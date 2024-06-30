@@ -128,7 +128,7 @@ static int ov57_021D0E1C (OverlayManager * param0, int * param1)
 static int ov57_021D0E34 (OverlayManager * param0, int * param1)
 {
     SaveData * v0 = ((UnkStruct_0203CC84 *)OverlayManager_Args(param0))->unk_08;
-    UnkStruct_02025CCC * v1 = sub_02025CCC(v0);
+    SystemData * v1 = sub_02025CCC(v0);
 
     ov57_021D0F30(77, v0);
     Options_SetSystemButtonMode(v0, OPTIONS_BUTTON_MODE_NORMAL);

@@ -7265,7 +7265,7 @@ static BOOL ScrCmd_282 (ScriptContext * ctx)
 {
     u16 * v0 = ScriptContext_GetVarPointer(ctx);
     FieldSystem * fieldSystem = ctx->fieldSystem;
-    UnkStruct_02025CCC * v2;
+    SystemData * v2;
 
     v2 = sub_02025CCC(ctx->fieldSystem->saveData);
 
@@ -7691,7 +7691,7 @@ static BOOL ScrCmd_2AA (ScriptContext * ctx)
 static BOOL ScrCmd_2AC (ScriptContext * ctx)
 {
     FieldSystem * fieldSystem = ctx->fieldSystem;
-    UnkStruct_02025CCC * v1;
+    SystemData * v1;
 
     v1 = sub_02025CCC(ctx->fieldSystem->saveData);
 

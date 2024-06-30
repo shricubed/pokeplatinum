@@ -818,7 +818,7 @@ static int ov61_0222CBF0 (UnkStruct_ov61_0222C664 * param0)
 {
     DWCUserData * v0;
     s32 v1;
-    UnkStruct_02025CCC * v2;
+    SystemData * v2;
     UnkStruct_0202B370 * v3;
 
     v3 = sub_0202B370(param0->unk_00->unk_00->unk_04);
