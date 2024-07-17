@@ -257,7 +257,7 @@ void FieldMapChange_UpdateGameData (FieldSystem * fieldSystem, BOOL noWarp)
     VsSeeker_Reset(SaveData_GetVarsFlags(fieldSystem->saveData));
 
     if (!noWarp) {
-        sub_020559DC(fieldSystem);
+        FieldSystem_SetDateTime(fieldSystem);
     }
 
     if (!noWarp) {
@@ -313,7 +313,7 @@ void FieldMapChange_UpdateGameDataDistortionWorld (FieldSystem * fieldSystem, BO
     VsSeeker_Reset(SaveData_GetVarsFlags(fieldSystem->saveData));
 
     if (!param1) {
-        sub_020559DC(fieldSystem);
+        FieldSystem_SetDateTime(fieldSystem);
     }
 
     if (!param1) {
@@ -516,7 +516,7 @@ static BOOL FieldTask_LoadSavedGameMap (TaskManager * taskMan)
         } else {
             FieldMapChange_SetNewLocation(fieldSystem, NULL);
             sub_020533CC(fieldSystem);
-            sub_020559DC(fieldSystem);
+            FieldSystem_SetDateTime(fieldSystem);
             FieldMapChange_LoadObjects(fieldSystem);
         }
 

@@ -6053,7 +6053,7 @@ static BOOL ScrCmd_1B5 (ScriptContext * ctx)
 static BOOL ScrCmd_GetTimeOfDay (ScriptContext * ctx)
 {
     u16 *timeOfDay = ScriptContext_GetVarPointer(ctx);
-    *timeOfDay = sub_02055BA8(ctx->fieldSystem);
+    *timeOfDay = GetTimeOfDay(ctx->fieldSystem);
     return FALSE;
 }
 
@@ -7008,7 +7008,7 @@ static BOOL ScrCmd_268 (ScriptContext * ctx)
 {
     u16 * v0 = ScriptContext_GetVarPointer(ctx);
 
-    *v0 = sub_02055BDC(ctx->fieldSystem);
+    *v0 = GetHour(ctx->fieldSystem);
     return 0;
 }
 
@@ -7269,7 +7269,7 @@ static BOOL ScrCmd_282 (ScriptContext * ctx)
 
     v2 = sub_02025CCC(ctx->fieldSystem->saveData);
 
-    if ((sub_02025D5C(v2) == sub_02055BB8(fieldSystem)) && (sub_02025D60(v2) == sub_02055BC4(fieldSystem))) {
+    if ((sub_02025D5C(v2) == GetMonth(fieldSystem)) && (sub_02025D60(v2) == GetDay(fieldSystem))) {
         *v0 = 1;
     } else {
         *v0 = 0;

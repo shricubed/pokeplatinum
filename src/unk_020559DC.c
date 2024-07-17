@@ -34,33 +34,33 @@ static void sub_02055B64(FieldSystem * fieldSystem, s32 param1, const RTCTime * 
 static void sub_02055A14(FieldSystem * fieldSystem, UnkStruct_02055BA8 * param1, const RTCDate * param2);
 static void inline_020559DC(FieldSystem * fieldSystem, UnkStruct_02055BA8 * param1, const RTCDate * param2, const RTCTime * param3);
 
-void sub_020559DC (FieldSystem * fieldSystem)
+void FieldSystem_SetDateTime (FieldSystem * fieldSystem)
 {
-    RTCDate v0;
-    RTCTime v1;
+    RTCDate date;
+    RTCTime time;
     UnkStruct_02055BA8 * v2 = sub_02025CD8(fieldSystem->saveData);
 
     if (v2->unk_00 == 0) {
         return;
     }
 
-    GetCurrentDateTime(&v0, &v1);
-    sub_02055A14(fieldSystem, v2, &v0);
+    GetCurrentDateTime(&date, &time);
+    sub_02055A14(fieldSystem, v2, &date);
 
-    inline_020559DC(fieldSystem, v2, &v0, &v1);
+    inline_020559DC(fieldSystem, v2, &date, &time);
 }
 
 static void sub_02055A14 (FieldSystem * fieldSystem, UnkStruct_02055BA8 * param1, const RTCDate * param2)
 {
-    s32 v0;
+    s32 day;
 
-    v0 = RTC_ConvertDateToDay(param2);
+    day = RTC_ConvertDateToDay(param2);
 
-    if (v0 < param1->unk_20) {
-        param1->unk_20 = v0;
-    } else if (v0 > param1->unk_20) {
-        sub_02055AC0(fieldSystem, v0 - param1->unk_20);
-        param1->unk_20 = v0;
+    if (day < param1->unk_20) {
+        param1->unk_20 = day;
+    } else if (day > param1->unk_20) {
+        sub_02055AC0(fieldSystem, day - param1->unk_20);
+        param1->unk_20 = day;
     }
 }
 
@@ -97,10 +97,8 @@ static void sub_02055AC0 (FieldSystem * fieldSystem, s32 param1)
     sub_0202D80C(sub_0202D834(fieldSystem->saveData), sub_0202B428(sub_0202B4A0(fieldSystem->saveData)));
 
     {
-        Party * v0;
-
-        v0 = Party_GetFromSavedata(fieldSystem->saveData);
-        Party_UpdatePokerusStatus(v0, param1);
+        Party * party = Party_GetFromSavedata(fieldSystem->saveData);
+        Party_UpdatePokerusStatus(party, param1);
     }
 
     {
@@ -150,37 +148,37 @@ static void sub_02055B64 (FieldSystem * fieldSystem, s32 param1, const RTCTime *
     }
 }
 
-int sub_02055BA8 (const FieldSystem * fieldSystem)
+int GetTimeOfDay (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
     return TimeOfDayForHour(v0->unk_14.hour);
 }
 
-int sub_02055BB8 (const FieldSystem * fieldSystem)
+int GetMonth (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
     return v0->unk_04.month;
 }
 
-int sub_02055BC4 (const FieldSystem * fieldSystem)
+int GetDay (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
     return v0->unk_04.day;
 }
 
-int sub_02055BD0 (const FieldSystem * fieldSystem)
+int GetWeek (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
     return v0->unk_04.week;
 }
 
-int sub_02055BDC (const FieldSystem * fieldSystem)
+int GetHour (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
     return v0->unk_14.hour;
 }
 
-int sub_02055BE8 (const FieldSystem * fieldSystem)
+int GetMinute (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
     return v0->unk_14.minute;
@@ -189,7 +187,7 @@ int sub_02055BE8 (const FieldSystem * fieldSystem)
 void sub_02055BF4 (const FieldSystem * fieldSystem, RTCDate * param1, RTCTime * param2)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
-    RTC_ConvertSecondToDateTime(param1, param2, v0->unk_24);
+    RTC_ConvertSecondToDateTime(param1, param2, v0->convertedSeconds);
 }
 
 void sub_02055C10 (const FieldSystem * fieldSystem, RTCDate * param1, RTCTime * param2)
@@ -198,7 +196,7 @@ void sub_02055C10 (const FieldSystem * fieldSystem, RTCDate * param1, RTCTime * 
     RTC_ConvertSecondToDateTime(param1, param2, v0->unk_2C);
 }
 
-void sub_02055C2C (const FieldSystem * fieldSystem)
+void SetTimestamp (const FieldSystem * fieldSystem) //SetTimestamp
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
 

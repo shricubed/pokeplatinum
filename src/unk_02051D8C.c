@@ -173,7 +173,7 @@ BattleParams * sub_02051F4C (int param0, const FieldSystem * fieldSystem)
     sub_0205281C(v4, fieldSystem);
     Options_Copy(v1, v4->unk_108);
 
-    v4->unk_138 = sub_02055BA8(fieldSystem);
+    v4->unk_138 = GetTimeOfDay(fieldSystem);
     Bag_TryAddItem(v4->unk_E0, 4, 20, param0);
     v5 = Pokemon_New(param0);
 
@@ -259,7 +259,7 @@ void sub_020521B8 (BattleParams * param0, const FieldSystem * fieldSystem, SaveD
 
     if (fieldSystem != NULL) {
         sub_0205281C(param0, fieldSystem);
-        param0->unk_138 = sub_02055BA8(fieldSystem);
+        param0->unk_138 = GetTimeOfDay(fieldSystem);
     } else {
         param0->unk_128 = MapHeader_GetBattleBG(param3);
         param0->unk_12C = 9;
@@ -339,7 +339,7 @@ void sub_02052348 (BattleParams * param0, const FieldSystem * fieldSystem, int p
     sub_020521A4(param0, v6, 0);
 
     param0->unk_EC = SaveData_PCBoxes(fieldSystem->saveData);
-    param0->unk_138 = sub_02055BA8(fieldSystem);
+    param0->unk_138 = GetTimeOfDay(fieldSystem);
     param0->unk_E4 = fieldSystem->unk_98;
     param0->unk_190 = fieldSystem->unk_BC;
     param0->poketchData = SaveData_PoketchData(fieldSystem->saveData);
@@ -409,7 +409,7 @@ void sub_020524E4 (BattleParams * param0, const FieldSystem * fieldSystem, const
     sub_020521A4(param0, v3, 0);
 
     param0->unk_EC = SaveData_PCBoxes(fieldSystem->saveData);
-    param0->unk_138 = sub_02055BA8(fieldSystem);
+    param0->unk_138 = GetTimeOfDay(fieldSystem);
     param0->unk_E4 = fieldSystem->unk_98;
     param0->unk_190 = fieldSystem->unk_BC;
     param0->unk_104 = sub_0202C878(fieldSystem->saveData);

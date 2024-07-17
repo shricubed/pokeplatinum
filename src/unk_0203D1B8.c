@@ -1059,7 +1059,7 @@ BOOL sub_0203DBF0 (TaskManager * param0)
         v2->unk_48.unk_14 = SaveData_Options(fieldSystem->saveData);
         v2->unk_48.unk_10 = 1;
 
-        switch (sub_02055BA8(fieldSystem)) {
+        switch (GetTimeOfDay(fieldSystem)) {
         case 0:
         case 1:
         default:

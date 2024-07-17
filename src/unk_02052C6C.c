@@ -203,7 +203,7 @@ void sub_02052E58 (TaskManager * param0)
     v5->unk_10.unk_08 = SaveData_Pokedex(fieldSystem->saveData);
 
     if (sub_0206A954(v3) == 0) {
-        sub_02055C2C(fieldSystem);
+        SetTimestamp(fieldSystem);
     }
 
     v7 = Party_GetFromSavedata(fieldSystem->saveData);

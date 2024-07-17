@@ -2834,7 +2834,7 @@ static const u16 Unk_ov5_021F9F54[] = {
 
 static int ov5_021E7110 (FieldSystem * fieldSystem)
 {
-    int v0 = sub_02055BB8(fieldSystem) * 100 + sub_02055BC4(fieldSystem);
+    int v0 = GetMonth(fieldSystem) * 100 + GetDay(fieldSystem);
     int v1;
 
     if (sub_02055C40(fieldSystem)) {

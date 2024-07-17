@@ -961,7 +961,7 @@ static BOOL FieldMenu_Pokedex (TaskManager * taskMan)
 
     v2->unk_00 = v3;
     v2->unk_04 = v4;
-    v2->unk_08 = sub_02055BA8(fieldSystem);
+    v2->unk_08 = GetTimeOfDay(fieldSystem);
     v2->unk_0C = sub_0206B1F0(v5, 0);
     v2->unk_10 = sub_0206B1F0(v5, 1);
     v2->unk_14 = sub_0206B1F0(v5, 2);

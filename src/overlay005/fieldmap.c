@@ -502,7 +502,7 @@ void ov5_021D12D0 (FieldSystem * fieldSystem, u32 param1)
 static void ov5_021D134C (FieldSystem * fieldSystem, u8 param1)
 {
     if (sub_020509A4(fieldSystem) == 0) {
-        sub_020559DC(fieldSystem);
+        FieldSystem_SetDateTime(fieldSystem);
     }
 
     ov5_021D5298(fieldSystem->unk_4C);
