@@ -56,11 +56,11 @@ static void sub_02055A14 (FieldSystem * fieldSystem, UnkStruct_02055BA8 * param1
 
     day = RTC_ConvertDateToDay(param2);
 
-    if (day < param1->unk_20) {
-        param1->unk_20 = day;
-    } else if (day > param1->unk_20) {
-        sub_02055AC0(fieldSystem, day - param1->unk_20);
-        param1->unk_20 = day;
+    if (day < param1->convertedDay) {
+        param1->convertedDay = day;
+    } else if (day > param1->convertedDay) {
+        sub_02055AC0(fieldSystem, day - param1->convertedDay);
+        param1->convertedDay = day;
     }
 }
 
@@ -70,11 +70,11 @@ static void inline_020559DC (FieldSystem * fieldSystem, UnkStruct_02055BA8 * par
     s32 v2;
 
     v0 = RTC_ConvertDateTimeToSecond(param2, param3);
-    v1 = RTC_ConvertDateTimeToSecond(&param1->unk_04, &param1->unk_14);
+    v1 = RTC_ConvertDateTimeToSecond(&param1->RtcDate, &param1->RtcTime);
 
     if (v0 < v1) {
-        param1->unk_04 = *param2;
-        param1->unk_14 = *param3;
+        param1->RtcDate = *param2;
+        param1->RtcTime = *param3;
     } else {
         v2 = (v0 - v1) / 60;
 
@@ -82,8 +82,8 @@ static void inline_020559DC (FieldSystem * fieldSystem, UnkStruct_02055BA8 * par
             sub_02025DC8(param1, v2);
             sub_02055B64(fieldSystem, v2, param3);
 
-            param1->unk_04 = *param2;
-            param1->unk_14 = *param3;
+            param1->RtcDate = *param2;
+            param1->RtcTime = *param3;
         }
     }
 }
@@ -151,37 +151,37 @@ static void sub_02055B64 (FieldSystem * fieldSystem, s32 param1, const RTCTime *
 int GetTimeOfDay (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
-    return TimeOfDayForHour(v0->unk_14.hour);
+    return TimeOfDayForHour(v0->RtcTime.hour);
 }
 
 int GetMonth (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
-    return v0->unk_04.month;
+    return v0->RtcDate.month;
 }
 
 int GetDay (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
-    return v0->unk_04.day;
+    return v0->RtcDate.day;
 }
 
 int GetWeek (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
-    return v0->unk_04.week;
+    return v0->RtcDate.week;
 }
 
 int GetHour (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
-    return v0->unk_14.hour;
+    return v0->RtcTime.hour;
 }
 
 int GetMinute (const FieldSystem * fieldSystem)
 {
     UnkStruct_02055BA8 * v0 = sub_02025CD8(fieldSystem->saveData);
-    return v0->unk_14.minute;
+    return v0->RtcTime.minute;
 }
 
 void sub_02055BF4 (const FieldSystem * fieldSystem, RTCDate * param1, RTCTime * param2)
